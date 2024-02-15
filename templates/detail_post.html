@@ -4,6 +4,11 @@
   <h1>{{post.title}}</h1>
   <p> {{post.content}} </p>
   <p> By {{name}}<p>
+  <p><b>Tags:</b> 
+    {% for tag in tags %}
+      <i>{{tag.name}}</i> 
+    {% endfor %}
+  </p>
   <a href="/posts/{{post.id}}/edit" class="button">Edit</a>
   <a href="/posts/{{post.id}}/delete" class="button">Delete</a>
 

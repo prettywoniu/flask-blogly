@@ -41,3 +41,26 @@ class Post(db.Model):
                         nullable=False)
     
     user = db.relationship('User', backref='posts')
+    assignments = db.relationship('PostTag', backref='posts')
+    # tags = db.relationship('Tag', secondary='posts_tags', backref='posts')
+
+class Tag(db.Model):
+
+    __tablename__ = "tags"
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(20), nullable=False)
+
+    posts = db.relationship('Post', secondary='posts_tags', backref='tags')
+    assignments = db.relationship('PostTag', backref='tags')
+
+class PostTag(db.Model):
+
+    __tablename__ = "posts_tags"
+
+    post_id = db.Column(db.Integer, 
+                        db.ForeignKey("posts.id"),
+                        primary_key=True)
+    tag_id = db.Column(db.Integer, 
+                       db.ForeignKey("tags.id"),
+                       primary_key=True)

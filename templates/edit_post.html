@@ -7,6 +7,13 @@
         <input type="text" name="title" placeholder="{{post.title}}"><br><br>
         <label for="content">Post content</label>
         <input type="text" name="content" placeholder="{{post.content}}"><br><br>
+        
+        {% for tag in tags %}
+        <input type="checkbox" id="tag{{tag.id}}" name="tags" value="{{tag.id}}">
+        <label for="tag{{tag.id}}"> {{tag.name}}</label><br>
+        {% endfor %}
+        
+        <br>
         <a href="/posts/{{post.id}}" class="button">Cancel</a>
         <button type="submit" class="button">Save</button>
     </form> 

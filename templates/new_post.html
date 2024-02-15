@@ -7,6 +7,13 @@
     <input type="text" name="title"><br><br>
     <label for="content">Content</label>
     <input type="text" name="content"><br><br>
+    
+    {% for tag in tags %}
+    <input type="checkbox" id="tag{{tag.id}}" name="tags" value="{{tag.id}}">
+    <label for="tag{{tag.id}}"> {{tag.name}}</label><br>
+    {% endfor %}
+    
+    <br>
     <a href="/users/{{user.id}}">Cancel</a>
     <button type="submit" class="button">Add</button>
   </form> 
